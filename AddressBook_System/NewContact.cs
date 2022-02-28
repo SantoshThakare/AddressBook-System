@@ -35,6 +35,19 @@ namespace AddressBook_System
                 {
                     Console.WriteLine("What is Required to be Edited");
                 }
+                Console.ReadKey();
+            }
+        }
+        internal void DeleteContact(string user)
+        {
+            ContactManager delete = new ContactManager();
+            foreach (var contact in addressList)
+            {
+                if (contact.FirstName == user || contact.LastName == user)
+                {
+                    addressList.Remove(contact);
+                }
+                
             }
         }
 
