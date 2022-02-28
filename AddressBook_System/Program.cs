@@ -15,25 +15,27 @@ namespace AddressBook_System
                 {
                     Console.WriteLine("Welcome to AddressBook Program");
                     Console.WriteLine(" Enter options : \n 1. Create Contacts" +
-                        "\n 2 Added Contacts ");
+                        "\n 2 Added Contacts " +
+                        "\n 3 Edit Contacts");
                     int option = Convert.ToInt32(Console.ReadLine());
                     switch (option)
                     {
 
                         case 1:
                             Console.WriteLine("Enter the Contact details of FirstName, LastName, Address, City, State, Zip, Ph.no, Email");
-                            ContactManager newcontact = new ContactManager()
-                            {
-                                FirstName = Console.ReadLine(),
-                                LastName = Console.ReadLine(),
-                                Address = Console.ReadLine(),
-                                City = Console.ReadLine(),
-                                State = Console.ReadLine(),
-                                Zip = Console.ReadLine(),
-                                PhoneNumber = Console.ReadLine(),
-                                Email = Console.ReadLine(),
-                            };
+                        ContactManager newcontact = new ContactManager()
+                        {
+                            FirstName = Console.ReadLine(),
+                            LastName = Console.ReadLine(),
+                            Address = Console.ReadLine(),
+                            City = Console.ReadLine(),
+                            State = Console.ReadLine(),
+                            Zip = Console.ReadLine(),
+                            PhoneNumber = Console.ReadLine(),
+                            Email = Console.ReadLine(),
+                        };
                             break;
+
                     case 2:
                         Console.WriteLine("Enter the Contact to be Add : FirstName, LastName, Addr, City, State, Zip, Ph.No, Email.");
                         Console.WriteLine("Enter the Contact to be Add: ");
@@ -50,7 +52,16 @@ namespace AddressBook_System
                         contact.Email = Console.ReadLine();
                         addressBook.Display();
                         break;
+
                     case 3:
+                        Console.WriteLine("Enter the Contact Name to be Edit: ");
+                        string name = Console.ReadLine();
+                        NewContact edit = new NewContact();
+                        edit.EditContact(name);
+                        edit.Display();
+                        break;
+
+                    case 4:
                             flag = false;
                             break;
                     }
