@@ -18,9 +18,11 @@ namespace AddressBook_System
                         "\n 2. Added Contacts " +
                         "\n 3. Edit Contacts" +
                         "\n 4. Delete contact" +
-                        "\n 5.Add Multiple Contact" +
+                        "\n 5. Add Multiple Contact" +
                         "\n 6. Refactor Code" +
-                        "\n 7. Exist");
+                        "\n 7. Check Duplicates Name" +
+                        "\n 8. Search Person using State or City" +
+                        "\n 9. Exist");
                     int option = Convert.ToInt32(Console.ReadLine());
                     switch (option)
                     {
@@ -95,12 +97,27 @@ namespace AddressBook_System
                         aboo.DisplayUniqueContacts();
                         break;
                     case 7:
-
+                        
                         NewContact search = new NewContact();
                         search.CheckDuplicateEntry();
                         break;
-
                     case 8:
+                        Console.WriteLine("Select the options to Check\n 1. City \n 2. State");
+                        int number = Convert.ToInt32(Console.ReadLine());
+
+                        if (number == 1)
+                        {
+                            NewContact City = new NewContact();
+                            City.PersonInCity();
+                        }
+                        if (number == 2)
+                        {
+                            NewContact State = new NewContact();
+                            State.ForState();
+                        }
+                        break;
+
+                    case 9:
                             flag = false;
                             break;
                     }

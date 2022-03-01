@@ -92,6 +92,27 @@ namespace AddressBook_System
                 }
             }
         }
+        public void PersonInCity()
+        {
+            Console.WriteLine("Enter the City name to Check Persons");
+            string City = Console.ReadLine();
+            List<ContactManager> cityList = addressList.FindAll(e => e.City == City);
+            foreach (var place in cityList)
+            {
+                Console.WriteLine("Found person {0} {1} in the Address Book, living in the City {2}", place.FirstName, place.LastName, place.City);
+            }
+        }
+
+        public void ForState()
+        {
+            Console.WriteLine("Enter the State name to check Persons");
+            string state = Console.ReadLine();
+            List<ContactManager> stateList = addressList.FindAll(e => e.State == state);
+            foreach (var sta in stateList)
+            {
+                Console.WriteLine("Found the name of {0} {1} in the Address Book, living in the City {2}", sta.FirstName, sta.LastName, sta.State);
+            }
+        }
 
     }
 }
