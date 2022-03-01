@@ -19,7 +19,8 @@ namespace AddressBook_System
                         "\n 3. Edit Contacts" +
                         "\n 4. Delete contact" +
                         "\n 5.Add Multiple Contact" +
-                        "\n 6. Exist");
+                        "\n 6. Refactor Code" +
+                        "\n 7. Exist");
                     int option = Convert.ToInt32(Console.ReadLine());
                     switch (option)
                     {
@@ -86,8 +87,15 @@ namespace AddressBook_System
                         con.Email = Console.ReadLine();
                         abo.Display();
                         break;
-                    
                     case 6:
+                        Console.WriteLine("Enter the Unique Contact to be Added : ");
+                        string nam = Console.ReadLine();
+                        NewContact aboo = new NewContact();
+                        aboo.AddUniqueContact(nam);
+                        aboo.DisplayUniqueContacts();
+                        break;
+
+                    case 7:
                             flag = false;
                             break;
                     }
