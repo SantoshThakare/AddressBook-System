@@ -94,8 +94,13 @@ namespace AddressBook_System
                         aboo.AddUniqueContact(nam);
                         aboo.DisplayUniqueContacts();
                         break;
-
                     case 7:
+
+                        NewContact search = new NewContact();
+                        search.CheckDuplicateEntry();
+                        break;
+
+                    case 8:
                             flag = false;
                             break;
                     }

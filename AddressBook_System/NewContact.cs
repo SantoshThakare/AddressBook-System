@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AddressBook_System
 {
@@ -78,6 +75,21 @@ namespace AddressBook_System
                             " " + data.Zip + " " + data.Email);
                     }
                 } 
+            }
+        }
+        public static void CheckDuplicateEntry(List<ContactManager> contacts, ContactManager contactBook)
+        {
+            foreach (var Details in contacts)
+            {
+                var person = contacts.Find (e => e.FirstName.Equals(contactBook.FirstName));
+                if (person != null)
+                {
+                    Console.WriteLine("This Contact Already Exists with same first name :" +contactBook.FirstName);
+                }
+                else
+                {
+                    Console.WriteLine("continue with other");
+                }
             }
         }
 
