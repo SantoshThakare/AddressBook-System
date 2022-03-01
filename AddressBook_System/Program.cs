@@ -6,19 +6,20 @@ using System.Threading.Tasks;
 
 namespace AddressBook_System
 {
-     class Program
+    public class Program
     {
-            static void Main(string[] args)
+           public static void Main(string[] args)
             {
                 bool flag = true;
                 while (flag)
                 {
                     Console.WriteLine("Welcome to AddressBook Program");
                     Console.WriteLine(" Enter options : \n 1. Create Contacts" +
-                        "\n 2 Added Contacts " +
-                        "\n 3 Edit Contacts" +
-                        "\n 4 Delete contact" +
-                        "\n 5 Exist");
+                        "\n 2. Added Contacts " +
+                        "\n 3. Edit Contacts" +
+                        "\n 4. Delete contact" +
+                        "\n 5.Add Multiple Contact" +
+                        "\n 6. Exist");
                     int option = Convert.ToInt32(Console.ReadLine());
                     switch (option)
                     {
@@ -69,8 +70,24 @@ namespace AddressBook_System
                         del.DeleteContact(user);
                         del.Display();
                         break;
-
                     case 5:
+                        Console.WriteLine("Enter the Contact to Add in form of FirstName, LastName, Addr, City, State, Zip, Ph.No, Email.");
+                        Console.WriteLine("Enter the Contact to Add: ");
+                        ContactManager con = new ContactManager();
+                        NewContact abo = new NewContact();
+                        abo.AddContact(con);
+                        con.FirstName = Console.ReadLine();
+                        con.LastName = Console.ReadLine();
+                        con.Address = Console.ReadLine();
+                        con.City = Console.ReadLine();
+                        con.State = Console.ReadLine();
+                        con.Zip = Console.ReadLine();
+                        con.PhoneNumber = Console.ReadLine();
+                        con.Email = Console.ReadLine();
+                        abo.Display();
+                        break;
+                    
+                    case 6:
                             flag = false;
                             break;
                     }

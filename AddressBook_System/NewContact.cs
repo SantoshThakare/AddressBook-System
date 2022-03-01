@@ -9,6 +9,7 @@ namespace AddressBook_System
     public class NewContact
     {
         List<ContactManager> addressList = new List<ContactManager>();
+        
         public void AddContact(ContactManager contact)
         {
             addressList.Add(contact);
@@ -38,7 +39,7 @@ namespace AddressBook_System
                 Console.ReadKey();
             }
         }
-        internal void DeleteContact(string user)
+        public void DeleteContact(string user)
         {
             ContactManager delete = new ContactManager();
             foreach (var contact in addressList)
@@ -50,6 +51,7 @@ namespace AddressBook_System
                 
             }
         }
+   
 
     }
 }
