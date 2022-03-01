@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AddressBook_System
 {
@@ -139,7 +140,23 @@ namespace AddressBook_System
                     }
                     break;
             }
-
         }
+            public void CityCount()
+            {
+                Console.WriteLine("Enter the city name to check its count : ");
+                string city = Console.ReadLine();
+                List<ContactManager> cityList = addressList.FindAll(e => e.City == city);
+                Console.WriteLine("The Number of contact persons in the city {0} are {1}", city, cityList.Count());
+            }
+            public void StateCount()
+            {
+                Console.WriteLine("Enter the state name to check its count : ");
+                string state = Console.ReadLine();
+                List<ContactManager> stateList = addressList.FindAll(e => e.State == state);
+                Console.WriteLine("The number of contact persons in the state {0} are {1}", state, stateList.Count());
+            }
+        
+
     }
+    
 }

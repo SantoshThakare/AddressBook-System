@@ -23,7 +23,8 @@ namespace AddressBook_System
                         "\n 7. Check Duplicates Name" +
                         "\n 8. Search Person using State or City" +
                         "\n 9.View by State or City" +
-                        "\n 10. Exist");
+                        "\n 10. Count By State or City" +
+                        "\n 11. Exist");
                     int option = Convert.ToInt32(Console.ReadLine());
                     switch (option)
                     {
@@ -122,6 +123,21 @@ namespace AddressBook_System
                         break;
 
                     case 10:
+                        Console.WriteLine("Select the options to Check\n 1. CityCount \n 2. StateCount");
+                        int num = Convert.ToInt32(Console.ReadLine());
+                        if (num == 1)
+                        {
+                            NewContact addressBookk = new NewContact();
+                            addressBookk.CityCount();
+                        }
+                        if (num == 2)
+                        {
+                            NewContact addreSsBook = new NewContact();
+                            addreSsBook.StateCount();
+                        }
+                        break;
+
+                    case 11:
                             flag = false;
                             break;
                     }
