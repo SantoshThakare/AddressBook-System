@@ -22,7 +22,8 @@ namespace AddressBook_System
                         "\n 6. Refactor Code" +
                         "\n 7. Check Duplicates Name" +
                         "\n 8. Search Person using State or City" +
-                        "\n 9. Exist");
+                        "\n 9.View by State or City" +
+                        "\n 10. Exist");
                     int option = Convert.ToInt32(Console.ReadLine());
                     switch (option)
                     {
@@ -99,7 +100,6 @@ namespace AddressBook_System
                     case 7:
                         
                         NewContact search = new NewContact();
-                        search.CheckDuplicateEntry();
                         break;
                     case 8:
                         Console.WriteLine("Select the options to Check\n 1. City \n 2. State");
@@ -116,8 +116,12 @@ namespace AddressBook_System
                             State.ForState();
                         }
                         break;
-
                     case 9:
+                        NewContact View = new NewContact();
+                        View.View_person_city_state();
+                        break;
+
+                    case 10:
                             flag = false;
                             break;
                     }
