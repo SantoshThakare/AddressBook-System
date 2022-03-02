@@ -27,7 +27,8 @@ namespace AddressBook_System
                         "\n 10. Count By State or City" +
                         "\n 11. AddressBook Sorting" +
                         "\n 12.Sorting entries by City, State or Zipcode" +
-                        "\n 13. Exist");
+                        "\n 13. Read or Write in Address Book Using File I/"+
+                        "\n 14. Exist");
                     int option = Convert.ToInt32(Console.ReadLine());
                     switch (option)
                     {
@@ -148,8 +149,14 @@ namespace AddressBook_System
                         NewContact sortbysate = new NewContact();
                         sortbysate.Sorting();
                         break;
-
                     case 13:
+
+                        NewContact read = new NewContact();
+                        read.ReadFile();
+                        read.WritingUsingStreamWriter();
+                        break;
+
+                    case 14:
                             flag = false;
                             break;
                     }

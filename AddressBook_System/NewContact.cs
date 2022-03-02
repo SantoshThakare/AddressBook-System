@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace AddressBook_System
@@ -171,7 +172,6 @@ namespace AddressBook_System
             }
         }
         public void Sorting()
-
         {
             Console.WriteLine("Enter the Address Book name that you want to sort : ");
             string addressBookName = Console.ReadLine();
@@ -195,6 +195,22 @@ namespace AddressBook_System
                     Display();
                     break;
             }
+        }
+        public void ReadFile()
+        {
+            Console.WriteLine("The Contact details in the file after reading : \n ");
+            string filePath = @"E:\VSCode\BasicProgram\AddressBook-System\AddressBook_System\TextFile1.txt";
+            string text = File.ReadAllText(filePath);
+            Console.WriteLine(text);
+        }
+        public void WritingUsingStreamWriter()
+        {
+            Console.WriteLine("\n The Contact details in the file after writing : ");
+            String filePath = @"E:\VSCode\BasicProgram\AddressBook-System\AddressBook_System\TextFile1.txt";
+            StreamWriter writer = File.AppendText(filePath);
+            writer.WriteLine("\nAlternative Number : 98343980285");
+            writer.Close();
+            Console.WriteLine(File.ReadAllText(filePath));
         }
 
 
