@@ -26,7 +26,8 @@ namespace AddressBook_System
                         "\n 9. View by State or City" +
                         "\n 10. Count By State or City" +
                         "\n 11. AddressBook Sorting" +
-                        "\n 12. Exist");
+                        "\n 12.Sorting entries by City, State or Zipcode" +
+                        "\n 13. Exist");
                     int option = Convert.ToInt32(Console.ReadLine());
                     switch (option)
                     {
@@ -142,7 +143,13 @@ namespace AddressBook_System
                         NewContact sort = new NewContact();
                         sort.AddressBookSorting();
                         break;
+
                     case 12:
+                        NewContact sortbysate = new NewContact();
+                        sortbysate.Sorting();
+                        break;
+
+                    case 13:
                             flag = false;
                             break;
                     }
