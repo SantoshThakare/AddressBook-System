@@ -253,7 +253,7 @@ namespace AddressBook_System
                 Console.Write("\t" + addressData.FirstName + "\t" + addressData.LastName + "\t" +
                    addressData.Address + "\t" + addressData.City + "\t" + addressData.State + "\t" + addressData.Zip);
             }
-            JsonSerializer serializer = new JsonSerializer();
+            JsonSerializer serializer = new JsonSerializer(); 
             {
                  StreamWriter sw = new StreamWriter(exportFilePath);
                  JsonWriter writer = new JsonTextWriter(sw);
