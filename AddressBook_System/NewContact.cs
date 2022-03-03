@@ -1,5 +1,8 @@
-﻿using System;
+﻿using CsvHelper;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 
@@ -142,20 +145,20 @@ namespace AddressBook_System
                     break;
             }
         }
-            public void CityCount()
-            {
-                Console.WriteLine("Enter the city name to check its count : ");
-                string city = Console.ReadLine();
-                List<ContactManager> cityList = addressList.FindAll(e => e.City == city);
-                Console.WriteLine("The Number of contact persons in the city {0} are {1}", city, cityList.Count());
-            }
-            public void StateCount()
-            {
-                Console.WriteLine("Enter the state name to check its count : ");
-                string state = Console.ReadLine();
-                List<ContactManager> stateList = addressList.FindAll(e => e.State == state);
-                Console.WriteLine("The number of contact persons in the state {0} are {1}", state, stateList.Count());
-            }
+        public void CityCount()
+        {
+            Console.WriteLine("Enter the city name to check its count : ");
+            string city = Console.ReadLine();
+            List<ContactManager> cityList = addressList.FindAll(e => e.City == city);
+            Console.WriteLine("The Number of contact persons in the city {0} are {1}", city, cityList.Count());
+        }
+        public void StateCount()
+        {
+            Console.WriteLine("Enter the state name to check its count : ");
+            string state = Console.ReadLine();
+            List<ContactManager> stateList = addressList.FindAll(e => e.State == state);
+            Console.WriteLine("The number of contact persons in the state {0} are {1}", state, stateList.Count());
+        }
         public void AddressBookSorting()
         {
             Console.WriteLine("Enter the Address Book name that you want to sort : ");
@@ -212,8 +215,53 @@ namespace AddressBook_System
             writer.Close();
             Console.WriteLine(File.ReadAllText(filePath));
         }
+        public void ImplementAddressBookinCsv()
+        {
+            string importFilePath = (@"E:\VSCode\BasicProgram\AddressBook-System\AddressBook_System\info.csv");
+            string exportFilePath = (@"E:\VSCode\BasicProgram\AddressBook-System\AddressBook_System\export.csv");
+            using (var reader = new StreamReader(importFilePath))
+            using (var csv = new CsvReader(reader, CultureInfo.CurrentCulture))
+            {
+                var records = csv.GetRecords<ContactManager>().ToList();
 
+                foreach (var addressData in records)
+                {
+                    Console.Write("\t" + addressData.FirstName + "\t" + addressData.LastName + "\t" +
+                       addressData.Address + "\t" + addressData.City + "\t" + addressData.State + "\t" +
+                       addressData.Zip + "\t" + addressData.PhoneNumber + "\t" + addressData.Email);
 
+                }
+
+                using (var writer = new StreamWriter(exportFilePath))
+                using (var csvExport = new CsvWriter(writer, CultureInfo.CurrentCulture))
+                {
+                    csvExport.WriteRecords(records);
+
+                }
+            }
+        }
+        public  void ImplementAddressBookinJson()
+        {
+            string importFilePath = @"E:\VSCode\BasicProgram\AddressBook-System\AddressBook_System\info1.json";
+            string exportFilePath = @"E:\VSCode\BasicProgram\AddressBook-System\AddressBook_System\Export.json";
+
+             StreamReader reader = new StreamReader(importFilePath);
+            var json = reader.ReadToEnd();
+            var data = JsonConvert.DeserializeObject<List<ContactManager>>(json);
+            foreach (var addressData in data)
+            {
+                Console.Write("\t" + addressData.FirstName + "\t" + addressData.LastName + "\t" +
+                   addressData.Address + "\t" + addressData.City + "\t" + addressData.State + "\t" + addressData.Zip);
+            }
+            JsonSerializer serializer = new JsonSerializer();
+            {
+                 StreamWriter sw = new StreamWriter(exportFilePath);
+                 JsonWriter writer = new JsonTextWriter(sw);
+                  serializer.Serialize(writer, data);
+            }
+        }
     }
-    
+
 }
+
+

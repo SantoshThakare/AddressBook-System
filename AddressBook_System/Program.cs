@@ -27,8 +27,10 @@ namespace AddressBook_System
                         "\n 10. Count By State or City" +
                         "\n 11. AddressBook Sorting" +
                         "\n 12.Sorting entries by City, State or Zipcode" +
-                        "\n 13. Read or Write in Address Book Using File I/"+
-                        "\n 14. Exist");
+                        "\n 13. Read or Write in Address Book Using File I/O"+
+                        "\n 14. Read and Write in Address Book using CSV" +
+                        "\n 15. Read and Write in Address Book using Json" +
+                        "\n 16. Exist");
                     int option = Convert.ToInt32(Console.ReadLine());
                     switch (option)
                     {
@@ -157,6 +159,16 @@ namespace AddressBook_System
                         break;
 
                     case 14:
+                        
+                        NewContact Implement = new NewContact();
+                        Implement.ImplementAddressBookinCsv();
+                        break;
+                    case 15:
+                        NewContact Implement1 = new NewContact();
+                        Implement1.ImplementAddressBookinJson();
+                        break;
+
+                    case 16:
                             flag = false;
                             break;
                     }
